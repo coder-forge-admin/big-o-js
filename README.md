@@ -10,11 +10,11 @@ problem will probably involve:
 // set params
 const config = {
     itterate: 100,
-    reducer = function(arg, i){
+    reducer: function(arg, i){
         // @param arg previous itterations arguments
         // @param i current argument index
 
-        if(i===1)
+        if(i===1) // 2nd arg
             arg.push(arg[arg.length-1]+1);
 
         return arg;

@@ -1,6 +1,10 @@
 "use strict";
 
-const assert = require('chai').assert;
+const assert = require('chai').assert,
+    config = {
+        itterate: 10,
+        reduce: (arg, i)=>{return arg;},
+    };
 let BigOClass = require('../../lib/bigo'),
     bigo;
 
@@ -8,7 +12,13 @@ describe('bigo', ()=>{
 
     beforeEach(()=>{
 
-        bigo = new BigOClass();
+        bigo = new BigOClass(config);
+    });
+
+    it.only('will set config', ()=>{
+
+        assert.equal(bigo.itterate, config.itterate);
+        assert.equal(bigo.reduce.toString(), config.reduce.toString());
     });
 
     it('will run one itteration of code underTest', ()=>{
@@ -41,7 +51,7 @@ describe('bigo', ()=>{
             })
     });
 
-    it.only('will map array according to filter', ()=>{
+    it('will map array according to filter', ()=>{
 
         bigo.itterations = 10;
         bigo.args = [2,3,1,5];

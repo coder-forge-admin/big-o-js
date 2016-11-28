@@ -25,9 +25,16 @@ const config = {
 const bigOClass = require('./lib/big-o-js'),
     bigO = new bigOClass(config);
 
+// make any arrays to increase itterators
+const varAr = bigO.makeIterator([1,2,3,4], function(){
+    return nextIndex < array.length ?
+        {value: array[nextIndex++], done: false} :
+        {done: true};
+});
+
 // run
 bigO
-    .args([1,2],[1,2,3,4])
+    .args([1,2],varAr)
     .run()
         .then((result) => {
 

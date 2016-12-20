@@ -15,7 +15,7 @@ describe('bigo', ()=>{
         bigo = new BigOClass(config);
     });
 
-    it.only('will set config', ()=>{
+    it('will set config', ()=>{
 
         assert.equal(bigo.itterate, config.itterate);
         assert.equal(bigo.reduce.toString(), config.reduce.toString());

@@ -2,58 +2,52 @@
 
 ### work in progress
 
-The end goal here is to measure the time complexity of a function. Solving the
-problem will probably involve:
+The end goal here is to measure the time complexity of a function.
 
-```javascript
-
-// set params
-const config = {
-    itterate: 100,
-    reducer: function(arg, i){
-        // @param arg previous itterations arguments
-        // @param i current argument index
-
-        if(i===1) // 2nd arg
-            arg.push(arg[arg.length-1]+1);
-
-        return arg;
-    }    
-}
-
-// build bigO
-const bigOClass = require('./lib/big-o-js'),
-    bigO = new bigOClass(config);
-
-// make any arrays to increase itterators
-const varAr = bigO.makeIterator([1,2,3,4], function(){
-    return nextIndex < array.length ?
-        {value: array[nextIndex++], done: false} :
-        {done: true};
-});
-
-// run
-bigO
-    .args([1,2],varAr)
-    .run()
-        .then((result) => {
-
-            // graph results
-        });
+### installation
+```bash
+npm install
+bower install
 ```
 
-With expected setters
-```javascript
-// non chained
-big0.itterate = 10;
-big0.reducer = (arg)=>{ return arg;};
+### setup
 
-// chained
-big0
-    .args([1,2])
-    .run()
+First export the function you want to test in the file `bin/underTest.js`:
+```javascript
+"use strict";
+
+module.exports = function myFunction(A) {
+  ...
+};
+```
+
+Configuration is done in the file `index.js`. Currently you can only set the
+number of iterations and the initial arguments.
+```javascript
+"use strict";
+
+const config = {
+  itterate: 1000,
+};
+const initArgs = [34,6298,234,2983,234,98,234];
+...
+```
+
+### Running
+In first terminal
+```bash
+node index.js
+```
+In second terminal (http-server can be installed with `npm install -g
+http-server`)
+```bash
+http-server
 ```
 
 ### Roadmap
 
- - http://bl.ocks.org/simenbrekken/6634070
+ - acceptance and unit tests
+ - remove noise from chart
+ - this cool thing called a configurable configuration implementation.
+ - set user defined generator's for argument incrementation.
+ - and hopefully something like: http://bl.ocks.org/simenbrekken/6634070

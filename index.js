@@ -1,13 +1,16 @@
 "use strict";
 
+const config = {
+  iterate: 1000,
+};
+const initArgs = [34,6298,234,2983,234,98,234];
+
 const fs = require('fs'),
   bigoClass = require('./lib/bigo'),
-    bigo = new bigoClass({
-      itterate: 100,
-    });
+    bigo = new bigoClass(config);
 
 bigo
-  .args([34,6298,234,2983,234,98,234])
+  .args(initArgs)
   .run()
   .then(runs => {
 
@@ -18,8 +21,6 @@ bigo
         time: a.time.ms,
       };
     });
-    console.log(d3Runs);
-    console.log(d3Runs[0]);
 
     fs.writeFile('data.json', JSON.stringify(d3Runs), e=>{
       if(e) throw Error('Error writing to file: \n\t'+e.message);

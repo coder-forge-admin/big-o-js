@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert,
     config = {
-        itterate: 10,
+        iterate: 10,
         reduce: (arg, i)=>{return arg;},
     };
 let BigOClass = require('../../lib/bigo'),
@@ -17,55 +17,43 @@ describe('bigo', ()=>{
 
     it('will set config', ()=>{
 
-        assert.equal(bigo.itterate, config.itterate);
+        assert.equal(bigo.iterate, config.iterate);
         assert.equal(bigo.reduce.toString(), config.reduce.toString());
     });
 
-    it('will run one itteration of code underTest', ()=>{
+    it('will analyze a function', ()=>{
 
-        let test = [2,3,1,5],
-            expected = {
-                runs: [
-                    {args: [2,3,1,5], time: 3, result: 4}  //ms
-                ]
-            }
-
-        return bigo.run(test)
-            .then(actual => {
-                console.log(actual);
-                assert.deepEqual(actual.args, expected.args);
-                assert.property(actual.runs[0], 'time');
-                assert.property(actual.runs[0], 'result');
-            });
+      BigOAnalyze.start(fnStr)
+        .then(res => {
+          res.start.ms;
+          res.end.ms;
+          res.duration.ms;
+        });
     });
 
-    it('will run x amount of itterations', ()=>{
+    it('will run system under test', ()=>{
+
+      return bigo.run(BigOTimer)
+        .then(results => {
+
+        });
+    });
+
+    it('will handle factory generator array (1 dim)', ()=>{
+
+      testAr = BigOGenerator([1,2,3,4]);
+      bigo.args = testAr;
+    });
+
+    it('will run x amount of iterations', ()=>{
 
         let test = [2,3,1,5];
 
-        bigo.itterations = 10;
+        bigo.iterations = 10;
 
         return bigo.run(test)
             .then(actual => {
                 assert.equal(actual.runs.length, 10);
             })
-    });
-
-    it('will map array according to filter', ()=>{
-
-        bigo.itterations = 10;
-        bigo.args = [2,3,1,5];
-
-        bigo
-            .argsItterator([
-                function(arg){
-                    arg.push(arg[arg.length-1]+1);
-                    return arg;
-                },
-            ])
-            .run()
-            .then(actual => {
-                console.log(actual);
-            });
     });
 });

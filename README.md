@@ -44,10 +44,16 @@ bigO
 
 With expected setters
 ```javascript
+// non chained
 big0.itterate = 10;
 big0.reducer = (arg)=>{ return arg;};
 
+// chained
 big0
     .args([1,2])
     .run()
 ```
+
+### Roadmap
+
+ - http://bl.ocks.org/simenbrekken/6634070

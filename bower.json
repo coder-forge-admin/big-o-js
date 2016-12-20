@@ -1,0 +1,18 @@
+{
+  "name": "big-o-js",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Daithi Coombes <webeire@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/coder-forge/big-o-js",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

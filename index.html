@@ -40,7 +40,7 @@ d3.json("./data.json", function(error, data) {
   if (error) throw error;
 
   x.domain(d3.extent(data, function(d) { return d.time; }));
-  y.domain(d3.extent(data, function(d) { return d.size; }));
+  y.domain(d3.extent(data, function(d) { console.log(d.size); return d.size; }));
 
   g.append("g")
       .attr("class", "axis axis--x")

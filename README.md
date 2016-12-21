@@ -4,10 +4,13 @@
 
 The end goal here is to measure the time complexity of a function.
 
+For now only tests a function with one argument. Solving this is in progress.
+
 ### installation
 ```bash
 npm install
 bower install
+npm install -g http-server
 ```
 
 ### setup
@@ -28,8 +31,8 @@ number of iterations and the initial arguments.
 
 const config = {
   itterate: 1000,
-};
-const initArgs = [34,6298,234,2983,234,98,234];
+  arguments: [34,6298,234,2983,234,98,234],
+}
 ...
 ```
 
@@ -46,8 +49,7 @@ http-server
 
 ### Roadmap
 
- - acceptance and unit tests
+ - test with more than one argument
+ - allow user defined generator's for argument incrementation.
  - remove noise from chart
- - this cool thing called a configurable configuration implementation.
- - set user defined generator's for argument incrementation.
- - and hopefully something like: http://bl.ocks.org/simenbrekken/6634070
+ - and hopefully something like: http://bl.ocks.org/simenbrekken/6634070 with start/stop btn's

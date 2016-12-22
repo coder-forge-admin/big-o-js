@@ -27,4 +27,20 @@ describe('BigOAnalyze', ()=>{
                 done();
             });
     });
+
+    it('will handle multiple arguments', (done)=>{
+
+        const args = [
+            [1],
+            [23],
+        ];
+
+        const testFn = function underTest(){
+            assert.equal(arguments[0], args[0]);
+            assert.equal(arguments[1], args[1]);
+            done();
+        }
+
+        bigoAnalyze.start(testFn, args);
+    });
 });

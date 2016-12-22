@@ -30,8 +30,12 @@ number of iterations and the initial arguments.
 "use strict";
 
 const config = {
-  iterate: 1000,
-  arguments: [34,6298,234,2983,234,98,234],
+    iterate: 1000,
+    arguments: [
+        [34,6298,234,2983,234,98,234],  // arg1
+        [12],                           // arg2
+        // ...
+    ],
 }
 ...
 ```

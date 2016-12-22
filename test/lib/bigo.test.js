@@ -33,7 +33,7 @@ describe('bigo', ()=>{
         done();
     });
 
-    it.only('will factory a generator object from arguments array', (done)=>{
+    it('will factory a generator object from arguments array', (done)=>{
 
         const args = [
             [1],
@@ -48,7 +48,7 @@ describe('bigo', ()=>{
         done();
     });
 
-    it.only('will iterate fn through Analyzer', ()=>{
+    it('will iterate fn through Analyzer', ()=>{
 
         let actualFnStr, actualArgs;
 
@@ -90,7 +90,7 @@ describe('bigo', ()=>{
 
     it('will run x amount of iterations', ()=>{
 
-        let test = [2,3,1,5];
+        let test = [[2,3,1,5]];
 
         bigo.args = test;
 

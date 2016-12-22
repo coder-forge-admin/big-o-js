@@ -1,8 +1,8 @@
 "use strict";
 
 const config = {
-    iterate: 1000,
-    arguments: [34,6298,234,2983,234,98,234],
+    iterate: 4,
+    arguments: [[34],[6298]],
 };
 
 const fs = require('fs'),
@@ -16,7 +16,13 @@ bigo
         // model data for d3.js in front end.
         const d3Runs = runs.map((a, i)=>{
             return {
-                size: a.args.length,
+                size: (()=>{
+                    let size = 0;
+                    for(let x=0; x<a.args.length; x++){
+                        size += a.args[x].length;
+                    }
+                    return size;
+                })(),
                 time: a.time.ms,
             };
         });

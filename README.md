@@ -1,5 +1,7 @@
 # Time Complexity - BigO Notation
 
+[![CircleCI](https://circleci.com/gh/coder-forge/big-o-js/tree/master.svg?style=svg)](https://circleci.com/gh/coder-forge/big-o-js/tree/master)
+
 ### work in progress
 
 The end goal here is to measure the time complexity of a function.

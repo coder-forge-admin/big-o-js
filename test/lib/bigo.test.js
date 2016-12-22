@@ -33,41 +33,50 @@ describe('bigo', ()=>{
         done();
     });
 
-    it('will factory a generator object from arguments', (done)=>{
+    it.only('will factory a generator object from arguments array', (done)=>{
 
-        const test  = [1,2,3,4];
+        const args = [
+            [1],
+            [2],
+            [3],
+        ];
 
-        bigo.args = test;
-        expect(bigo.args.next).to.be.instanceof(Function);
-        assert.deepEqual(bigo.args.next().value, [1,2,3,4,0]);
+        bigo.args = args;
+        for(let x=0; x<bigo.args.length; x++){
+            assert.deepEqual(bigo.args[x].next().value, args[x]);
+        }
         done();
     });
 
-    it('will iterate fn through Analyzer', ()=>{
+    it.only('will iterate fn through Analyzer', ()=>{
 
-        let testFnStr;
+        let actualFnStr, actualArgs;
 
         const mockAnalyzer = {
-            start(fn){
-                testFnStr = fn.toString();
+            start(fn, args){
+                actualFnStr = fn.toString();
+                actualArgs = args;
                 return Promise.resolve({ start: [ 3844, 260128029 ], end: [ 0, 212560 ] });
             }
         };
 
         bigo.underTest = function(args){
-            console.log('underTest args: ', args);
+            return args;
         }
 
         bigo.analyzer = mockAnalyzer;
         bigo.iterate = 1;
-        bigo.args = [1,2,3,4,56];
+        bigo.args = [[1],[2],[3],[4],[56]];
         return bigo.run()
             .then(res => {
 
-                assert.equal(res.length, 1);
-                assert.equal(bigo.underTest.toString(), testFnStr);
+                const actual = res[0],
+                expectedArgs = [[1,0],[2,0],[3,0],[4,0],[56,0]];
 
-                const actual = res[0];
+                assert.equal(res.length, 1);
+                assert.equal(bigo.underTest.toString(), actualFnStr);
+                assert.deepEqual(actualArgs, expectedArgs);
+
                 expect(actual).to.have.deep.property('args');
                 expect(actual).to.have.deep.property('time.secs');
                 expect(actual).to.have.deep.property('time.ms');

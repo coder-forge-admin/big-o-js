@@ -30,7 +30,7 @@ number of iterations and the initial arguments.
 "use strict";
 
 const config = {
-  itterate: 1000,
+  iterate: 1000,
   arguments: [34,6298,234,2983,234,98,234],
 }
 ...
@@ -51,5 +51,6 @@ http-server
 
  - test with more than one argument
  - allow user defined generator's for argument incrementation.
+ - test in full isolation (threads may be best here).
  - remove noise from chart
  - and hopefully something like: http://bl.ocks.org/simenbrekken/6634070 with start/stop btn's

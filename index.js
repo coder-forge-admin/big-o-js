@@ -1,7 +1,7 @@
 "use strict";
 
 const config = {
-    iterate: 4,
+    iterate: 1000,
     arguments: [[34],[6298]],
 };
 
@@ -27,6 +27,7 @@ bigo
             };
         });
 
+        console.log(d3Runs);
         fs.writeFile('data.json', JSON.stringify(d3Runs), e=>{
             if(e) throw Error('Error writing to file: \n\t'+e.message);
             console.log('Analysis complete, refresh webpage');
